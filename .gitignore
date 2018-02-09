@@ -3,6 +3,7 @@ bin/
 node_modules/
 PostDeployScripts/
 *.js.map
+.vscode
 ApplicationInsights.config
 iisnode.yml
 web.config

@@ -34,6 +34,8 @@ var luisAPIHostName = process.env.LUIS_API_HOSTNAME;
 
 const LuisModelUrl = 'https://' + luisAPIHostName + '/luis/v1/application?id=' + luisAppId + '&subscription-key=' + luisAPIKey;
 
+console.log(process.env.SOAP_RSH);
+
 var recognizer = new builder.LuisRecognizer(LuisModelUrl);
 
 dinbot.set(bot,builder,recognizer)
@@ -41,6 +43,7 @@ dinbot.setPrompts()
 dinbot.setDialogs()
 
 var intents = new builder.IntentDialog({ recognizers: [recognizer] })
+
 .matches('Saludo', function(session){
     session.beginDialog('Saludo');
 })
@@ -56,8 +59,8 @@ var intents = new builder.IntentDialog({ recognizers: [recognizer] })
 .matches('RSH.ObtenerTramo', function(session, args){
     dinbot.beginDialog('ObtenerTramoRsh', session, args);
 })
-.matches('RSH.ObtenerGrupoFamiliar', function(session){
-    session.beginDialog('ObtenergrupofamiliarRSH');
+.matches('RSH.ObtenerGrupoFamiliar', function(session){    
+    dinbot.beginDialog('ObtenerGrupoFamiliarRsh', session);
 })
 .onDefault((session) => {
     session.send('lo lamento, no entiendo lo que has dicho \'%s\'.', session.message.text);
@@ -70,19 +73,26 @@ bot.dialog('Saludo', [
         session.endDialog('Hola. ¿en qué puedo ayudarle?')
     },
 ]);
+
+/*
 bot.dialog('Ayuda', [
     function (session, args, next) {
         session.endDialog('Ha consultado por ayuda, por ahora solo puedo obtener la información del tramo en RSH.\n!Pronto tendré más opciones!.');
     },
 ]);
+*/
+
 bot.dialog('Despedida', [
     function (session, args, next) {
         session.endConversation('Hasta luego, !que tenga un buen día!',session.message.text);
     },
 ]);
-bot.dialog('ObtenergrupofamiliarRSH', [
+
+/*
+bot.dialog('RSH.ObtenerGrupoFamiliar', [
     function (session, args, next) {
         session.endDialog('Lo lamento, aún no puedo resolver esta solicitud. Consulta por ayuda para conocer mis opciones.');
     },
 ]);
+*/
 

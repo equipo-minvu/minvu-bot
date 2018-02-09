@@ -30,9 +30,7 @@ function RSHTramo(builder) {
 
         var rut = new Rut(results.response);
         var digitos = rut.rut;
-        var verificador = rut.checkDigit;
-        console.log(digitos);
-        console.log(verificador);
+        var verificador = rut.checkDigit;    
 
         var args = { entradaRSH: { Rut: digitos, Dv: verificador, Periodo: '-1', UsSist: '1' } };
 
