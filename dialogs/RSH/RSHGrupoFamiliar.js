@@ -1,6 +1,7 @@
 
 const soap = require('soap')
 var Rut = require('rutjs')
+//var card = require('./../../cards/heroCard')
 
 
 function RSHGrupoFamiliar(builder) {
@@ -44,8 +45,13 @@ function RSHGrupoFamiliar(builder) {
                         else {
                             if (result.ObtenerRegistroSocialHogaresResult.RESPUESTA.salidaRSH.Estado === 1) {
 
-                                const respuesta = result.ObtenerRegistroSocialHogaresResult.RESPUESTA.salidaRSH.RshMinvu.Personas                                                            
-                                session.send('Con respecto a su consulta del grupo familiar en RSH del rut ' + rut.getNiceRut() + ' es ' + JSON.stringify(respuesta));
+                                const objPersona = result.ObtenerRegistroSocialHogaresResult.RESPUESTA.salidaRSH.RshMinvu.Personas
+                                const rutCompleto = rut.getNiceRut()
+
+                                var card = createHeroCard(session, rutCompleto, objPersona);
+                                var msg = new builder.Message(session).addAttachment(card);
+                                session.send(msg);
+
                             }
                             else if (result.ObtenerRegistroSocialHogaresResult.RESPUESTA.salidaRSH.Estado === 2)
                                 session.send('Con respecto a su consulta del grupo familiar en RSH, el rut ' + rut.getNiceRut() + ' no tiene registros en RSH.');
@@ -61,7 +67,36 @@ function RSHGrupoFamiliar(builder) {
             session.endDialog()
         }
     ]
+
+    /*
+    function getFull(item, index) {
+        var full = ['Rut: ' + item.Rut, item.Dv, 'Nombre: ' + item.Nombres, item.Ape1, item.Ape2].join(" ");
+        return full;
+    }
+    objeto.Persona.map(getFull);
+    */
+
+
+    function createHeroCard(session, rutCompleto, objPersona) {
+
+        var nombrecompleto = '';
+        for (var i = 0; i < objPersona.Persona.length; i++) {
+            nombrecompleto = `${nombrecompleto} 
+`+ `${i + 1}.- ${objPersona.Persona[i].Rut}-${objPersona.Persona[i].Dv} ${objPersona.Persona[i].Nombres} ${objPersona.Persona[i].Ape1} ${objPersona.Persona[i].Ape2} `
+        }
+
+        console.log(nombrecompleto);
+        return new builder.HeroCard(session)
+            .title('RSH.- Grupo Familiar')
+            .subtitle(rutCompleto)
+            .text(nombrecompleto)
+            .images([
+                builder.CardImage.create(session, 'http://cdn.minvu.cl/NGM5.0/images/line-head-title.jpg', )
+            ]);
+    }
+
 }
+
 exports.RSHGrupoFamiliar = RSHGrupoFamiliar;
 
 
