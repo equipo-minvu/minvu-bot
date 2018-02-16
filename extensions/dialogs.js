@@ -7,6 +7,12 @@ var Dialogs = {
         return [
             { dialogId: RSHTramo.dialogId, dialog: RSHTramo.dialog }, //ObtenerTramoRsh
         ]
+
+        var RCivilInfoGeneral = new dialogs.RCivilInfoGeneral(builder);
+
+        return [
+            { dialogId: RCivilInfoGeneral.dialogId, dialog: RCivilInfoGeneral.dialog }, //RegistroCivilInfoGeneral
+        ]
     }
 }
 

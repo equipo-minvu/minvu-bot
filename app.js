@@ -74,6 +74,9 @@ var intents = new builder.IntentDialog({ recognizers: [recognizer] })
 .matches('RSH.ObtenerGrupoFamiliar', function(session){
     session.beginDialog('ObtenergrupofamiliarRSH');
 })
+.matches('RegistroCivil.InformacionGeneral', function(session){
+    session.beginDialog('RegistroCivilInfoGeneral');
+})
 .onDefault((session) => {
     session.send('lo lamento, no entiendo lo que has dicho \'%s\'.', session.message.text);
 });
