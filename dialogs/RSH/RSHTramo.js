@@ -1,5 +1,5 @@
-const soap = require('soap')
-var Rut = require('rutjs')
+const soap  = require('soap')
+var Rut     = require('rutjs')
 
 
 function RSHTramo(builder) {
@@ -30,15 +30,15 @@ function RSHTramo(builder) {
 
         var rut = new Rut(results.response);
         var digitos = rut.rut;
-        var verificador = rut.checkDigit;
+        var verificador = rut.checkDigit;    
 
         var args = { entradaRSH: { Rut: digitos, Dv: verificador, Periodo: '-1', UsSist: '1' } };
 
-        session.send('Ha consultado el tramo del rut: ' + rut.getCleanRut());
+        session.send('Ha consultado el tramo del rut: ' + rut.getNiceRut());
 
         soap.createClient('http://wsminvuni.test.minvu.cl/WSICEMds/RegistroSocialHogares.svc?singleWsdl', function (err, client) {
             if (err) {
-                session.send('Con respecto a su consulta al tramo en RSH, lo lamento, tuve un error al consultar el servicio de RSH');
+                session.send('Con respecto a su consulta al tramo en RSH, lo lamento, tuve un error al consultar el servicio de RSH 1');
                 console.log(err)
             }
             else {
@@ -46,11 +46,13 @@ function RSHTramo(builder) {
                     if (!result.ObtenerRegistroSocialHogaresResult.RESULTADO ||
                         !result.ObtenerRegistroSocialHogaresResult.RESPUESTA ||
                         !result.ObtenerRegistroSocialHogaresResult.RESPUESTA.salidaRSH) {
-                        session.send('Con respecto a su consulta al tramo en RSH, lo lamento, no pude obtener datos del servicio RSH')
+                        session.send('Con respecto a su consulta al tramo en RSH, lo lamento, no pude obtener datos del servicio RSH 2')
                     }
                     else {
-                        if (result.ObtenerRegistroSocialHogaresResult.RESPUESTA.salidaRSH.Estado === 1)
+                        if (result.ObtenerRegistroSocialHogaresResult.RESPUESTA.salidaRSH.Estado === 1){
+                            const tramo = result.ObtenerRegistroSocialHogaresResult.RESPUESTA.salidaRSH.RshMinvu.Tramo
                             session.send('Con respecto a su consulta al tramo en RSH, el tramo del rut ' + rut.getNiceRut() + ' es ' + tramo);
+                        }
                         else if (result.ObtenerRegistroSocialHogaresResult.RESPUESTA.salidaRSH.Estado === 2)
                             session.send('Con respecto a su consulta al tramo en RSH, el rut ' + rut.getNiceRut() + ' no tiene registros en RSH');
                         else
@@ -58,7 +60,7 @@ function RSHTramo(builder) {
                     }
                 }).catch((err) => {
                     console.log(err)
-                    session.send('Con respecto a su consulta al tramo en RSH, lo lamento, tuve un error en la consulta del tramo de RSH');
+                    session.send('Con respecto a su consulta al tramo en RSH, lo lamento, tuve un error en la consulta del tramo de RSH 3');
                 });
             }
         })
