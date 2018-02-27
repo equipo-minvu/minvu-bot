@@ -50,7 +50,7 @@ function RSHTramo(builder) {
                     }
                     else {
                         if (result.ObtenerRegistroSocialHogaresResult.RESPUESTA.salidaRSH.Estado === 1)
-                            session.send('Con respecto a su consulta al tramo en RSH, el tramo del rut ' + rut.getNiceRut() + ' es ' + tramo);
+                            session.send('Con respecto a su consulta al tramo en RSH, el tramo del rut ' + rut.getNiceRut() + ' es ' + result.ObtenerRegistroSocialHogaresResult.RESPUESTA.salidaRSH.RshMinvu.Tramo);
                         else if (result.ObtenerRegistroSocialHogaresResult.RESPUESTA.salidaRSH.Estado === 2)
                             session.send('Con respecto a su consulta al tramo en RSH, el rut ' + rut.getNiceRut() + ' no tiene registros en RSH');
                         else

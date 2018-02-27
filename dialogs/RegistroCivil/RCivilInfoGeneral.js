@@ -32,29 +32,50 @@ function RCivilInfoGeneral(builder) {
         var digitos = rut.rut;
         var verificador = rut.checkDigit;
 
-        var args = { entradaRCivil: { Rut: digitos, Dv: verificador, Periodo: '-1', UsSist: '1' } };
+       // var args = { entradaRCivil: { Rut: digitos, Dv: verificador, Periodo: '-1', UsSist: '1' } };
+        var args ={ _xml: '<ope_prt_regcivil_info_persona xmlns="http://minvu/ice/regcivil">'
+                                               + '<Infopersona xmlns="http://info_persona.Schema_info_persona_conice">'
+                                               + '  <Rut xmlns="">' + digitos + '</Rut>'
+                                               + '  <Dv xmlns="">' + verificador + '</Dv>'
+                                               + '  <Periodo xmlns="">0</Periodo>'
+                                               + '  <Ussist xmlns="">0</Ussist>'
+                                               + '</Infopersona>'
+                                               + '</ope_prt_regcivil_info_persona>"' };
 
-        session.send('Ha consultado los datos en Registro Civil del rut: ' + rut.getCleanRut());
 
-        soap.createClient('http://wsminvune.minvu.cl/Minvu.RegistroCivil/REGCIVIL_orc_datos_persona_prt_regcivil_info_persona.asmx?singleWsdl', function (err, client) {
+        session.send('Ha consultado los datos en Registro Civil del rut: ' + rut.getNiceRut());
+
+        soap.createClient(process.env.SOAP_RCIVIL, function (err, client) {
             if (err) {
                 session.send('Con respecto a su consulta de datos en Registro Civil, lo lamento, tuve un error al consultar el servicio de Registro Civil');
                 console.log(err)
             }
             else {
                 client['ope_prt_regcivil_info_persona' + 'Async'](args).then((result) => {
-                    if (!result.ope_prt_regcivil_info_persona.RESULTADO ||
-                        !result.ope_prt_regcivil_info_persona.minvuRutData ||
-                        !result.ope_prt_regcivil_info_persona.minvuRutData.persona) {
+                    console.log(result);
+                    if (!result.ICE.RESULTADO ||
+                        !result.ICE.minvuRutData ||
+                        !result.ICE.minvuRutData.persona) {
                         session.send('Con respecto a su consulta de datos en Registro Civil, lo lamento, no pude obtener datos del servicio de Registro Civil')
                     }
                     else {
-                        if (result.ope_prt_regcivil_info_persona.RESULTADO.Estado === 1)
-                            session.send('Con respecto a su consulta de datos en Registro Civil, la información del rut ' + rut.getNiceRut() + ' es ' + infoRegistroCivil);
-                        else if (result.ope_prt_regcivil_info_persona.RESULTADO.Estado === 0)
-                            session.send('Con respecto a su consulta de datos en Registro Civil, no encuentro resultados para el rut ' + rut.getNiceRut() + '.');
+                        if (result.ICE.RESULTADO.ESTADO === 1){
+                                const objRegistroCivil = result.ICE.minvuRutData
+                                const rutCompleto = rut.getNiceRut()
+                                console.log(objRegistroCivil);
+
+                                var cards = getCardsAttachments(session,rutCompleto, objRegistroCivil);
+                                // create reply with Carousel AttachmentLayout
+                                var reply = new builder.Message(session)
+                                .attachmentLayout(builder.AttachmentLayout.carousel)
+                                .attachments(cards);
+
+                                session.send(reply);
+                            }
+                        else if (result.ICE.RESULTADO.ESTADO === 0)
+                                session.send('Con respecto a su consulta de datos en Registro Civil, no encuentro resultados para el rut ' + rut.getNiceRut() + '.');
                         else
-                            session.send('Con respecto a su consulta de datos en Registro Civil, no reconozco la información que me entregan');
+                                session.send('Con respecto a su consulta de datos en Registro Civil, no reconozco la información que me entregan');
                     }
                 }).catch((err) => {
                     console.log(err)
@@ -64,6 +85,86 @@ function RCivilInfoGeneral(builder) {
         })
         session.endDialog()
     }]
+
+function getCardsAttachments(session, rutCompleto, objRegistroCivil){
+    return [
+        createPersonaHeroCard(session, rutCompleto, objRegistroCivil.persona),
+        createMatrimonioHeroCard(session, objRegistroCivil.matrimonio),
+        //createNucleoHeroCard(session, rutCompleto, objRegistroCivil.hijo)
+    ]
+}
+
+function createPersonaHeroCard(session, rutCompleto,objPersona) {
+
+/*
+var datosPersona = `Nombre: ${objPersona.nombres} ${objPersona.apPaterno} ${objPersona.apMaterno}` + `\n` +
+    `Fecha de Nacimiento: ${objPersona.fechaNaci}` + `\n` +
+    `Estado Civil: ${objPersona.estadoCivil}` + `\n` +
+    `Fecha de Defunción: ${objPersona.fechaDefun}` + `\n` +
+    `Estado Civil: ${objPersona.estadoCivil}` + `\n` +
+    `Nacionalidad: ${objPersona.nacionalidad}` + `\n` +
+    `Género: ${objPersona.sexo}`;
+*/
+    var datosPersona = `Nombre: ${objPersona.nombres} ${objPersona.apPaterno} ${objPersona.apMaterno}  \n
+    Fecha de Nacimiento: ${objPersona.fechaNaci}  \n
+    Estado Civil: ${objPersona.estadoCivil}  \n
+    Fecha de Defunción: ${objPersona.fechaDefun}  \n
+    Estado Civil: ${objPersona.estadoCivil}  \n
+    Nacionalidad: ${objPersona.nacionalidad}  \n
+    Género: ${objPersona.sexo} \n
+    Información Discapacidad \n
+    Mental: ${objPersona.discapacidad.mental} \n
+    Sensorial: ${objPersona.discapacidad.sensorial}  \n
+    Física: ${objPersona.discapacidad.fisica}  \n
+    Fecha de Vencimiento: ${objPersona.discapacidad.fechaVenc}`;
+
+    console.log(datosPersona);
+    return new builder.HeroCard(session)
+        .title('Registro Civil - Datos Persona')
+        .subtitle('Rut: ' + rutCompleto)
+        .text(datosPersona)
+        .images([
+            builder.CardImage.create(session, process.env.BANNER_GOB, )
+        ]);
+}
+
+function createMatrimonioHeroCard(session, objMatrimonio) {
+
+    var datosConyuge = '';
+    var rutConyuge = '';
+        for (var i = 0; i < objMatrimonio.length; i++) {
+            datosConyuge += `Nombre: ${objMatrimonio[i].conyuge[i].nombres} ${objMatrimonio[i].conyuge[i].apPaterno} ${objMatrimonio[i].conyuge[i].apMaterno}  \n
+            Fecha de Nacimiento: ${objMatrimonio[i].conyuge[i].fechaNaci}  \n
+            Estado Civil: ${objMatrimonio[i].conyuge[i].estadoCivil}  \n
+            Fecha de Defunción: ${objMatrimonio[i].conyuge[i].fechaDefun}  \n
+            Género: ${objMatrimonio[i].conyuge[i].sexo} \n
+            Capitulación: ${objMatrimonio[i].capitulacion} \n
+            Fecha Inscripción Matrimonio: ${objMatrimonio[i].fechaInscripcionMatrimonio} \n`                
+                /*Información Discapacidad \n;
+                
+                for (var j = 0; j < objMatrimonio[i].conyuge.length; j++) {
+                `${datosConyuge} 
+                `+ `Mental: ${objMatrimonio[i].conyuge[j].discapacidad.mental} \n
+                    Sensorial: ${objMatrimonio[i].conyuge[j].discapacidad.sensorial}  \n
+                    Física: ${objMatrimonio[i].conyuge[j].discapacidad.fisica}  \n
+                    Fecha de Vencimiento: ${objMatrimonio[i].conyuge[j].discapacidad.fechaVenc}`;
+                }*/
+            rutConyuge = `${objMatrimonio[i].conyuge[i].rut}`;
+ }
+
+    console.log(datosConyuge);
+    return new builder.HeroCard(session)
+        .title('Registro Civil - Datos Cónyuge')
+        .subtitle('Rut: ' + rutConyuge)
+        .text(datosConyuge)
+        .images([
+            builder.CardImage.create(session, process.env.BANNER_GOB, )
+        ]);
+}
+
+function createNucleoHeroCard(session, rutCompleto,objNucleo) {
+
+}
 
 }
 exports.RCivilInfoGeneral = RCivilInfoGeneral;

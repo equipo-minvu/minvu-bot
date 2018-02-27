@@ -4,11 +4,13 @@
     // Para más información, visite: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
+        
         {
             "type": "node",
             "request": "launch",
+            "protocol": "auto",
             "name": "Launch Program",
-            "program": "${workspaceFolder}\\app.js"
+            "program": "${workspaceRoot}\\app.js"
         }
     ]
 }
