@@ -12,13 +12,11 @@ server.listen(process.env.SERVER_PORT, () => {
    console.log('%s listening to %s', server.name, server.url); 
 });
   
-
 var connector = new builder.ChatConnector({
     appId: process.env.BOT_APP_ID,
     appPassword: process.env.BOT_APP_PASSWORD,
     openIdMetadata: process.env.BOT_OPEN_ID_METADATA 
 });
-
 
 server.post('/api/messages', connector.listen());
 
@@ -34,8 +32,6 @@ var luisAPIHostName = process.env.LUIS_API_HOSTNAME;
 
 const LuisModelUrl = 'https://' + luisAPIHostName + '/luis/v1/application?id=' + luisAppId + '&subscription-key=' + luisAPIKey;
 
-console.log(process.env.SOAP_RSH);
-
 var recognizer = new builder.LuisRecognizer(LuisModelUrl);
 
 dinbot.set(bot,builder,recognizer)
@@ -50,9 +46,13 @@ var intents = new builder.IntentDialog({ recognizers: [recognizer] })
 .matches('Ayuda', function(session){
     session.beginDialog('Ayuda');
 })
+
+/*
 .matches('Cancelar', function(session){
     //session.beginDialog('Cancelar');
 })
+*/
+
 .matches('Despedida', function(session){
     session.beginDialog('Despedida');
 })
@@ -68,31 +68,21 @@ var intents = new builder.IntentDialog({ recognizers: [recognizer] })
 
 
 bot.dialog('/', intents);  
+
 bot.dialog('Saludo', [
     function (session, args, next) {
         session.endDialog('Hola. ¿en qué puedo ayudarle?')
     },
 ]);
 
-/*
 bot.dialog('Ayuda', [
     function (session, args, next) {
-        session.endDialog('Ha consultado por ayuda, por ahora solo puedo obtener la información del tramo en RSH.\n!Pronto tendré más opciones!.');
+        session.endDialog('Ha consultado por ayuda, por ahora solo puedo obtener la información del Tramo y el Grup oFamiliar en RSH.\n!Pronto tendré más opciones!.');
     },
 ]);
-*/
 
 bot.dialog('Despedida', [
     function (session, args, next) {
         session.endConversation('Hasta luego, !que tenga un buen día!',session.message.text);
     },
 ]);
-
-/*
-bot.dialog('RSH.ObtenerGrupoFamiliar', [
-    function (session, args, next) {
-        session.endDialog('Lo lamento, aún no puedo resolver esta solicitud. Consulta por ayuda para conocer mis opciones.');
-    },
-]);
-*/
-

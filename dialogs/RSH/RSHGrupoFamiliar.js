@@ -3,7 +3,6 @@ const soap = require('soap')
 var Rut = require('rutjs')
 //var card = require('./../../cards/heroCard')
 
-
 function RSHGrupoFamiliar(builder) {
 
     this.dialogId = 'ObtenerGrupoFamiliarRsh'
@@ -91,7 +90,7 @@ function RSHGrupoFamiliar(builder) {
             .subtitle(rutCompleto)
             .text(nombrecompleto)
             .images([
-                builder.CardImage.create(session, 'http://cdn.minvu.cl/NGM5.0/images/line-head-title.jpg', )
+                builder.CardImage.create(session, 'http://cdn.minvu.cl/NGM5.0/images/line-head-title.jpg')
             ]);
     }
 
