@@ -18,13 +18,19 @@
       "name": "None"
     },
     {
+      "name": "RegistroCivil.InformacionGeneral"
+    },
+    {
       "name": "RSH.ObtenerGrupoFamiliar"
     },
     {
-      "name": "RSH.ObtenerTramoRsh"
+      "name": "RSH.ObtenerTramo"
     },
     {
       "name": "Saludo"
+    },
+    {
+      "name": "SPS.EstadoPago"
     }
   ],
   "entities": [],
@@ -62,6 +68,11 @@
     {
       "text": "hasta mañana",
       "intent": "Despedida",
+      "entities": []
+    },
+    {
+      "text": "ayuda",
+      "intent": "Ayuda",
       "entities": []
     },
     {
@@ -386,7 +397,7 @@
     },
     {
       "text": "dime el tramo de esta familia",
-      "intent": "RSH.ObtenerTramoRsh",
+      "intent": "RSH.ObtenerTramo",
       "entities": []
     },
     {
@@ -431,57 +442,57 @@
     },
     {
       "text": "cual es el rsh",
-      "intent": "RSH.ObtenerTramoRsh",
+      "intent": "RSH.ObtenerTramo",
       "entities": []
     },
     {
       "text": "dime el tramo de esta persona",
-      "intent": "RSH.ObtenerTramoRsh",
+      "intent": "RSH.ObtenerTramo",
       "entities": []
     },
     {
       "text": "dame el tramo",
-      "intent": "RSH.ObtenerTramoRsh",
+      "intent": "RSH.ObtenerTramo",
       "entities": []
     },
     {
       "text": "que rsh tiene la señora",
-      "intent": "RSH.ObtenerTramoRsh",
+      "intent": "RSH.ObtenerTramo",
       "entities": []
     },
     {
       "text": "en que tramo esta la persona",
-      "intent": "RSH.ObtenerTramoRsh",
+      "intent": "RSH.ObtenerTramo",
       "entities": []
     },
     {
       "text": "cual es el tramo de la familia rut",
-      "intent": "RSH.ObtenerTramoRsh",
+      "intent": "RSH.ObtenerTramo",
       "entities": []
     },
     {
       "text": "necesito saber el tramo de la persona rut",
-      "intent": "RSH.ObtenerTramoRsh",
+      "intent": "RSH.ObtenerTramo",
       "entities": []
     },
     {
       "text": "cual es la rsh del rut",
-      "intent": "RSH.ObtenerTramoRsh",
+      "intent": "RSH.ObtenerTramo",
       "entities": []
     },
     {
       "text": "dame la rsh del rut",
-      "intent": "RSH.ObtenerTramoRsh",
+      "intent": "RSH.ObtenerTramo",
       "entities": []
     },
     {
       "text": "dime cual es la rsh del rut",
-      "intent": "RSH.ObtenerTramoRsh",
+      "intent": "RSH.ObtenerTramo",
       "entities": []
     },
     {
       "text": "dame el tramo de",
-      "intent": "RSH.ObtenerTramoRsh",
+      "intent": "RSH.ObtenerTramo",
       "entities": []
     },
     {
@@ -741,172 +752,172 @@
     },
     {
       "text": "me puedes conseguir el tramo",
-      "intent": "RSH.ObtenerTramoRsh",
+      "intent": "RSH.ObtenerTramo",
       "entities": []
     },
     {
       "text": "me puedes conseguir el tramo de esta familia",
-      "intent": "RSH.ObtenerTramoRsh",
+      "intent": "RSH.ObtenerTramo",
       "entities": []
     },
     {
       "text": "me puedes conseguir el tramo de este rut",
-      "intent": "RSH.ObtenerTramoRsh",
+      "intent": "RSH.ObtenerTramo",
       "entities": []
     },
     {
       "text": "consigueme el tramo de este rut",
-      "intent": "RSH.ObtenerTramoRsh",
+      "intent": "RSH.ObtenerTramo",
       "entities": []
     },
     {
       "text": "consigueme el tramo de esta familia",
-      "intent": "RSH.ObtenerTramoRsh",
+      "intent": "RSH.ObtenerTramo",
       "entities": []
     },
     {
       "text": "consigueme el tramo",
-      "intent": "RSH.ObtenerTramoRsh",
+      "intent": "RSH.ObtenerTramo",
       "entities": []
     },
     {
       "text": "expresa el tramo",
-      "intent": "RSH.ObtenerTramoRsh",
+      "intent": "RSH.ObtenerTramo",
       "entities": []
     },
     {
       "text": "expresa el tramo de esta familia",
-      "intent": "RSH.ObtenerTramoRsh",
+      "intent": "RSH.ObtenerTramo",
       "entities": []
     },
     {
       "text": "expresa el tramo de este rut",
-      "intent": "RSH.ObtenerTramoRsh",
+      "intent": "RSH.ObtenerTramo",
       "entities": []
     },
     {
       "text": "expresame el tramo",
-      "intent": "RSH.ObtenerTramoRsh",
+      "intent": "RSH.ObtenerTramo",
       "entities": []
     },
     {
       "text": "expresame el tramo de esta familia",
-      "intent": "RSH.ObtenerTramoRsh",
+      "intent": "RSH.ObtenerTramo",
       "entities": []
     },
     {
       "text": "expresame el tramo de este rut",
-      "intent": "RSH.ObtenerTramoRsh",
+      "intent": "RSH.ObtenerTramo",
       "entities": []
     },
     {
       "text": "cuentame del tramo de esta persona",
-      "intent": "RSH.ObtenerTramoRsh",
+      "intent": "RSH.ObtenerTramo",
       "entities": []
     },
     {
       "text": "cuentame del tramo de esta familia",
-      "intent": "RSH.ObtenerTramoRsh",
+      "intent": "RSH.ObtenerTramo",
       "entities": []
     },
     {
       "text": "cuentame del tramo de este rut",
-      "intent": "RSH.ObtenerTramoRsh",
+      "intent": "RSH.ObtenerTramo",
       "entities": []
     },
     {
       "text": "informa el tramo de este rut",
-      "intent": "RSH.ObtenerTramoRsh",
+      "intent": "RSH.ObtenerTramo",
       "entities": []
     },
     {
       "text": "me puedes informar el tramo de este rut",
-      "intent": "RSH.ObtenerTramoRsh",
+      "intent": "RSH.ObtenerTramo",
       "entities": []
     },
     {
       "text": "me puedes informar el tramo",
-      "intent": "RSH.ObtenerTramoRsh",
+      "intent": "RSH.ObtenerTramo",
       "entities": []
     },
     {
       "text": "me puedes informar el tramo de esta familia",
-      "intent": "RSH.ObtenerTramoRsh",
+      "intent": "RSH.ObtenerTramo",
       "entities": []
     },
     {
       "text": "explicame el tramo de esta familia",
-      "intent": "RSH.ObtenerTramoRsh",
+      "intent": "RSH.ObtenerTramo",
       "entities": []
     },
     {
       "text": "explicame a que tramo pertenece esta familia",
-      "intent": "RSH.ObtenerTramoRsh",
+      "intent": "RSH.ObtenerTramo",
       "entities": []
     },
     {
       "text": "explicame a que tramo pertenece este rut",
-      "intent": "RSH.ObtenerTramoRsh",
+      "intent": "RSH.ObtenerTramo",
       "entities": []
     },
     {
       "text": "explicame a que tramo pertenece",
-      "intent": "RSH.ObtenerTramoRsh",
+      "intent": "RSH.ObtenerTramo",
       "entities": []
     },
     {
       "text": "dime el tramo de este rut",
-      "intent": "RSH.ObtenerTramoRsh",
+      "intent": "RSH.ObtenerTramo",
       "entities": []
     },
     {
       "text": "dime el tramo de",
-      "intent": "RSH.ObtenerTramoRsh",
+      "intent": "RSH.ObtenerTramo",
       "entities": []
     },
     {
       "text": "mencioname el tramo de esta familia",
-      "intent": "RSH.ObtenerTramoRsh",
+      "intent": "RSH.ObtenerTramo",
       "entities": []
     },
     {
       "text": "mencioname el tramo de este rut",
-      "intent": "RSH.ObtenerTramoRsh",
+      "intent": "RSH.ObtenerTramo",
       "entities": []
     },
     {
       "text": "mencioname el tramo",
-      "intent": "RSH.ObtenerTramoRsh",
+      "intent": "RSH.ObtenerTramo",
       "entities": []
     },
     {
       "text": "oye dame el tramo",
-      "intent": "RSH.ObtenerTramoRsh",
+      "intent": "RSH.ObtenerTramo",
       "entities": []
     },
     {
       "text": "oye dame el tramo de rsh",
-      "intent": "RSH.ObtenerTramoRsh",
+      "intent": "RSH.ObtenerTramo",
       "entities": []
     },
     {
       "text": "oye dame la rsh",
-      "intent": "RSH.ObtenerTramoRsh",
+      "intent": "RSH.ObtenerTramo",
       "entities": []
     },
     {
       "text": "oye dame la rsh del rut",
-      "intent": "RSH.ObtenerTramoRsh",
+      "intent": "RSH.ObtenerTramo",
       "entities": []
     },
     {
       "text": "oeh dame la rsh",
-      "intent": "RSH.ObtenerTramoRsh",
+      "intent": "RSH.ObtenerTramo",
       "entities": []
     },
     {
       "text": "oeh dame el tramo de esta familia",
-      "intent": "RSH.ObtenerTramoRsh",
+      "intent": "RSH.ObtenerTramo",
       "entities": []
     },
     {
@@ -1007,6 +1018,406 @@
     {
       "text": "wena amigo",
       "intent": "Saludo",
+      "entities": []
+    },
+    {
+      "text": "necesito los datos del registro civil para el rut",
+      "intent": "RegistroCivil.InformacionGeneral",
+      "entities": []
+    },
+    {
+      "text": "me das los datos del servicio civil para el rut",
+      "intent": "RegistroCivil.InformacionGeneral",
+      "entities": []
+    },
+    {
+      "text": "favor enviar la información del servicio de registro civil del rut",
+      "intent": "RegistroCivil.InformacionGeneral",
+      "entities": []
+    },
+    {
+      "text": "mandame la info del registro civil para el rut",
+      "intent": "RegistroCivil.InformacionGeneral",
+      "entities": []
+    },
+    {
+      "text": "dame los datos que te trae el civil con el rut",
+      "intent": "RegistroCivil.InformacionGeneral",
+      "entities": []
+    },
+    {
+      "text": "puedo tener los datos del civil para el rut",
+      "intent": "RegistroCivil.InformacionGeneral",
+      "entities": []
+    },
+    {
+      "text": "que datos te trae el registro civil con el rut",
+      "intent": "RegistroCivil.InformacionGeneral",
+      "entities": []
+    },
+    {
+      "text": "me darias la información proveniente del registro civil para el rut",
+      "intent": "RegistroCivil.InformacionGeneral",
+      "entities": []
+    },
+    {
+      "text": "cual es la info que trae el registro civil con el rut",
+      "intent": "RegistroCivil.InformacionGeneral",
+      "entities": []
+    },
+    {
+      "text": "informacion registro civil de la persona",
+      "intent": "RegistroCivil.InformacionGeneral",
+      "entities": []
+    },
+    {
+      "text": "me das la info del registro civil para la persona",
+      "intent": "RegistroCivil.InformacionGeneral",
+      "entities": []
+    },
+    {
+      "text": "cual es la info del civil de la persona",
+      "intent": "RegistroCivil.InformacionGeneral",
+      "entities": []
+    },
+    {
+      "text": "me das la informacion de la persona en el registro civil",
+      "intent": "RegistroCivil.InformacionGeneral",
+      "entities": []
+    },
+    {
+      "text": "cuales son los datos de la persona en el servicio de registro civil e identificacion",
+      "intent": "RegistroCivil.InformacionGeneral",
+      "entities": []
+    },
+    {
+      "text": "necesito los datos del registro civil para la persona",
+      "intent": "RegistroCivil.InformacionGeneral",
+      "entities": []
+    },
+    {
+      "text": "me darias la info proveniente del registro civil para la persona",
+      "intent": "RegistroCivil.InformacionGeneral",
+      "entities": []
+    },
+    {
+      "text": "que datos trae el registro civil con la persona",
+      "intent": "RegistroCivil.InformacionGeneral",
+      "entities": []
+    },
+    {
+      "text": "necesito la información del servicio civil para la persona rut",
+      "intent": "RegistroCivil.InformacionGeneral",
+      "entities": []
+    },
+    {
+      "text": "puedo saber los datos del registro civil para la persona",
+      "intent": "RegistroCivil.InformacionGeneral",
+      "entities": []
+    },
+    {
+      "text": "me dices la informacion del servicio de registro civil para la persona rut",
+      "intent": "RegistroCivil.InformacionGeneral",
+      "entities": []
+    },
+    {
+      "text": "cual información es la que te da el registro civil para el rut",
+      "intent": "RegistroCivil.InformacionGeneral",
+      "entities": []
+    },
+    {
+      "text": "me pidieron los datos del registro civil de la persona rut",
+      "intent": "RegistroCivil.InformacionGeneral",
+      "entities": []
+    },
+    {
+      "text": "mi jefe me pidio que le enviara la informacion que se obtiene de la consulta al registro civil para la persona rut",
+      "intent": "RegistroCivil.InformacionGeneral",
+      "entities": []
+    },
+    {
+      "text": "cual es la informacion que obtienes al consultar el rut en el registro civil",
+      "intent": "RegistroCivil.InformacionGeneral",
+      "entities": []
+    },
+    {
+      "text": "necesito tener la informacion del registro civil para la persona rut",
+      "intent": "RegistroCivil.InformacionGeneral",
+      "entities": []
+    },
+    {
+      "text": "quiero saber cual es la informacion que obtenemos al consultar en el registro civil al rut",
+      "intent": "RegistroCivil.InformacionGeneral",
+      "entities": []
+    },
+    {
+      "text": "me das los datos que te trae el civil para el rut",
+      "intent": "RegistroCivil.InformacionGeneral",
+      "entities": []
+    },
+    {
+      "text": "me das toda la informacion que obtienes del civil para la persona rut",
+      "intent": "RegistroCivil.InformacionGeneral",
+      "entities": []
+    },
+    {
+      "text": "puedes consultar el servicio de registro civil y darme la informacion de la persona",
+      "intent": "RegistroCivil.InformacionGeneral",
+      "entities": []
+    },
+    {
+      "text": "me das lo del registro civil para la persona",
+      "intent": "RegistroCivil.InformacionGeneral",
+      "entities": []
+    },
+    {
+      "text": "dame todo el registro civil para la persona",
+      "intent": "RegistroCivil.InformacionGeneral",
+      "entities": []
+    },
+    {
+      "text": "quiero saber la informacion civil de la persona",
+      "intent": "RegistroCivil.InformacionGeneral",
+      "entities": []
+    },
+    {
+      "text": "dame todos los datos del registro civil de la persona rut",
+      "intent": "RegistroCivil.InformacionGeneral",
+      "entities": []
+    },
+    {
+      "text": "me puedes dar la informacion que se obtiene al consultar a la persona en el registro civil",
+      "intent": "RegistroCivil.InformacionGeneral",
+      "entities": []
+    },
+    {
+      "text": "dame los datos civiles del rut",
+      "intent": "RegistroCivil.InformacionGeneral",
+      "entities": []
+    },
+    {
+      "text": "dame los datos del registro civil e identificacion para el rut",
+      "intent": "RegistroCivil.InformacionGeneral",
+      "entities": []
+    },
+    {
+      "text": "quiero saber la informacion del civil para la señora",
+      "intent": "RegistroCivil.InformacionGeneral",
+      "entities": []
+    },
+    {
+      "text": "quiero saber todos los datos del registro civil del caballero",
+      "intent": "RegistroCivil.InformacionGeneral",
+      "entities": []
+    },
+    {
+      "text": "que info te trae al consultar al señor en el registro civil",
+      "intent": "RegistroCivil.InformacionGeneral",
+      "entities": []
+    },
+    {
+      "text": "dame todos los datos del civil para el señor",
+      "intent": "RegistroCivil.InformacionGeneral",
+      "entities": []
+    },
+    {
+      "text": "dame el estado de pago del rut",
+      "intent": "SPS.EstadoPago",
+      "entities": []
+    },
+    {
+      "text": "quiero consultar el estado de pago del subsidio",
+      "intent": "SPS.EstadoPago",
+      "entities": []
+    },
+    {
+      "text": "en que estado de pago va el subsidio del rut",
+      "intent": "SPS.EstadoPago",
+      "entities": []
+    },
+    {
+      "text": "cual es el estado de pago del subsidio con rut",
+      "intent": "SPS.EstadoPago",
+      "entities": []
+    },
+    {
+      "text": "dame el estado de pago de beneficio",
+      "intent": "SPS.EstadoPago",
+      "entities": []
+    },
+    {
+      "text": "quiero saber el estado de pago del beneficio",
+      "intent": "SPS.EstadoPago",
+      "entities": []
+    },
+    {
+      "text": "en que estado de pago se encuentra el rut",
+      "intent": "SPS.EstadoPago",
+      "entities": []
+    },
+    {
+      "text": "en que estado de pago se encuentra el subsidio",
+      "intent": "SPS.EstadoPago",
+      "entities": []
+    },
+    {
+      "text": "en que estado de pago se encuentra el beneficio",
+      "intent": "SPS.EstadoPago",
+      "entities": []
+    },
+    {
+      "text": "cual es el estado de pago del beneficio",
+      "intent": "SPS.EstadoPago",
+      "entities": []
+    },
+    {
+      "text": "cual es el estado del beneficio",
+      "intent": "SPS.EstadoPago",
+      "entities": []
+    },
+    {
+      "text": "quiero saber en que proceso de pago va el rut",
+      "intent": "SPS.EstadoPago",
+      "entities": []
+    },
+    {
+      "text": "cuanto se ha pagado al rut",
+      "intent": "SPS.EstadoPago",
+      "entities": []
+    },
+    {
+      "text": "cuanto se ha pagado del subsidio",
+      "intent": "SPS.EstadoPago",
+      "entities": []
+    },
+    {
+      "text": "quiero saber cual es el estado de pago del rut",
+      "intent": "SPS.EstadoPago",
+      "entities": []
+    },
+    {
+      "text": "que estado de pago tiene el rut",
+      "intent": "SPS.EstadoPago",
+      "entities": []
+    },
+    {
+      "text": "que estado de pago tiene el subsidio",
+      "intent": "SPS.EstadoPago",
+      "entities": []
+    },
+    {
+      "text": "en que estado esta el beneficio",
+      "intent": "SPS.EstadoPago",
+      "entities": []
+    },
+    {
+      "text": "cuando lleva pagado el subsidio",
+      "intent": "SPS.EstadoPago",
+      "entities": []
+    },
+    {
+      "text": "cuanto es el pago del beneficio",
+      "intent": "SPS.EstadoPago",
+      "entities": []
+    },
+    {
+      "text": "cuanto se ha pagado al beneficio",
+      "intent": "SPS.EstadoPago",
+      "entities": []
+    },
+    {
+      "text": "cuantas uf se le ha pagado al beneficio",
+      "intent": "SPS.EstadoPago",
+      "entities": []
+    },
+    {
+      "text": "en que situación de pago se encuentra el beneficio",
+      "intent": "SPS.EstadoPago",
+      "entities": []
+    },
+    {
+      "text": "cual es la situación de pago del beneficio",
+      "intent": "SPS.EstadoPago",
+      "entities": []
+    },
+    {
+      "text": "en que situación de pago se encuentra el rut",
+      "intent": "SPS.EstadoPago",
+      "entities": []
+    },
+    {
+      "text": "dame la situación de pago del rut",
+      "intent": "SPS.EstadoPago",
+      "entities": []
+    },
+    {
+      "text": "que situación de pago tiene el beneficio",
+      "intent": "SPS.EstadoPago",
+      "entities": []
+    },
+    {
+      "text": "cuantas uf lleva pagado el rut",
+      "intent": "SPS.EstadoPago",
+      "entities": []
+    },
+    {
+      "text": "cuanto se le ha pagado al beneficio",
+      "intent": "SPS.EstadoPago",
+      "entities": []
+    },
+    {
+      "text": "que pago tiene el beneficio",
+      "intent": "SPS.EstadoPago",
+      "entities": []
+    },
+    {
+      "text": "en que va el pago del beneficio",
+      "intent": "SPS.EstadoPago",
+      "entities": []
+    },
+    {
+      "text": "en que va el pago del subsidio",
+      "intent": "SPS.EstadoPago",
+      "entities": []
+    },
+    {
+      "text": "dime cuantas uf se le han pagado",
+      "intent": "SPS.EstadoPago",
+      "entities": []
+    },
+    {
+      "text": "oye como va el pago del benficio",
+      "intent": "SPS.EstadoPago",
+      "entities": []
+    },
+    {
+      "text": "en que situación está el pago del beneficio",
+      "intent": "SPS.EstadoPago",
+      "entities": []
+    },
+    {
+      "text": "dime en que situación de pago esta el beneficio",
+      "intent": "SPS.EstadoPago",
+      "entities": []
+    },
+    {
+      "text": "dime como va el pago del subsidio",
+      "intent": "SPS.EstadoPago",
+      "entities": []
+    },
+    {
+      "text": "en que esta el pago del subsidio",
+      "intent": "SPS.EstadoPago",
+      "entities": []
+    },
+    {
+      "text": "me dices como esta el pago del beneficio",
+      "intent": "SPS.EstadoPago",
+      "entities": []
+    },
+    {
+      "text": "me indicas en que estado se encuentra el pago del rut",
+      "intent": "SPS.EstadoPago",
       "entities": []
     }
   ]
