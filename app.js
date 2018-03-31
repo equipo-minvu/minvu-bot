@@ -2,14 +2,14 @@
 var restify             = require('restify');
 var builder             = require('botbuilder');
 var botbuilder_azure    = require("botbuilder-azure");
-const soap              = require('soap')
-var Rut                 = require('rutjs')
+//const soap              = require('soap')
+//var Rut                 = require('rutjs')
 var dinbot              = require('./extensions/dinbot')
 const dotenv            = require('dotenv').config({ path: '.env' });
 
 var server = restify.createServer();
 server.listen(process.env.SERVER_PORT, () => {
-   console.log('%s listening to %s', server.name, server.url); 
+   console.log('Servidor escuchando en el puerto', process.env.SERVER_PORT); 
 });
   
 var connector = new builder.ChatConnector({
@@ -41,15 +41,16 @@ dinbot.setDialogs()
 var intents = new builder.IntentDialog({ recognizers: [recognizer] })
 
 .matches('Saludo', function(session){
-    //session.beginDialog('Saludo');
     session.beginDialog('MenuAyuda','MenuInicio');
 })
 .matches('Ayuda', function(session){
     session.beginDialog('MenuAyuda','MenuInicio');
 })
+/*
 .matches('Cancelar', function(session){
     //session.beginDialog('Cancelar');
 })
+*/
 .matches('Despedida', function(session){
     session.beginDialog('Despedida');
 })
@@ -69,19 +70,14 @@ var intents = new builder.IntentDialog({ recognizers: [recognizer] })
     session.send('lo lamento, no entiendo lo que has dicho \'%s\'.', session.message.text);
 });
 
-bot.dialog('/', intents);  
+bot.dialog('/', intents);
 
 bot.dialog('Saludo', [
     function (session, args, next) {
         session.endDialog('Encantado, soy DinBot 🤖. ¿en qué puedo ayudarle?')
     },
 ]);
-/*
-bot.dialog('Ayuda', [
-    function (session, args, next) {
-        session.endDialog('Ha consultado por ayuda, por ahora solo puedo obtener la información del Tramo y el Grupo Familiar en RSH.\n!Pronto tendré más opciones!.');
-    },
-]);*/
+
 bot.dialog('Despedida', [
     function (session, args, next) {
         session.endConversation('Ha sido un placer ayudarle. ¡Que tenga un buen día! 👋👾',session.message.text);
