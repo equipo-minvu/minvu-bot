@@ -2,6 +2,7 @@ App_Data/
 bin/
 node_modules/
 PostDeployScripts/
+npm-debug.log
 *.js.map
 .vscode
 ApplicationInsights.config
