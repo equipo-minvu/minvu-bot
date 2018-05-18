@@ -1,6 +1,7 @@
 const axios = require('axios')
 var Rut = require('rutjs')
 const helper = require('../../extensions/helper');
+const util = require('util')
 
 
 function EstadoPostulacion(builder) {
@@ -82,57 +83,57 @@ function createHeroCard(session, rutCompleto, objPersona) {
     var noAplica = 'N/A';    
     var nombrePersona = objPersona.NombrePersona;
 
-    detallePostulacion = `**TIPO DE POSTULACIÓN**: ${objPersona.TipoPostulacion}`
-        + `\n\n**ESTADO RUKÁN**: ${objPersona.EstadoRukan}`
-        + `\n\n**ESTADO POSTULACIÓN**: ${objPersona.EstadoPostulacion}`
-        + `\n\n**FECHA POSTULACIÓN**: ${objPersona.FechaPostulacion}`
+    detallePostulacion = `**TIPO DE POSTULACIÓN**: ${(util.isNullOrUndefined(objPersona.TipoPostulacion) ? `Sin Registro` : objPersona.TipoPostulacion)}`
+        + `\n\n**ESTADO RUKÁN**: ${(util.isNullOrUndefined(objPersona.EstadoRukan) ? `Sin Registro` : objPersona.EstadoRukan)}`
+        + `\n\n**ESTADO POSTULACIÓN**: ${(util.isNullOrUndefined(objPersona.EstadoPostulacion) ? `Sin Registro` : objPersona.EstadoPostulacion)}`
+        + `\n\n**FECHA POSTULACIÓN**: ${(util.isNullOrUndefined(objPersona.FechaPostulacion) ? `Sin Registro` : objPersona.FechaPostulacion)}`
 
     if(objPersona.CertificadoSubsidio != noAplica)
     {
-        detallePostulacion += `\n\n**ESTADO SUBSIDIO**: ${objPersona.EstadoSubsidio}`
-        + `\n\n**SERIE CERTIFICADO**: ${objPersona.CertificadoSubsidio}`
+        detallePostulacion += `\n\n**ESTADO SUBSIDIO**: ${(util.isNullOrUndefined(objPersona.EstadoSubsidio) ? `Sin Registro` : objPersona.EstadoSubsidio)}`
+        + `\n\n**SERIE CERTIFICADO**: ${(util.isNullOrUndefined(objPersona.CertificadoSubsidio) ? `Sin Registro` : objPersona.CertificadoSubsidio)}`
     }
 
     switch(objPersona.TipoPostulacion)
     {
         case 'Asignación Directa':
         {
-            detallePostulacion += `\n\n**N° SOLICITUD AD**: ${objPersona.SolicitudAD}`
-        + `\n\n**ESTADO AD**: ${objPersona.EstadoAD}`
+            detallePostulacion += `\n\n**N° SOLICITUD AD**: ${(util.isNullOrUndefined(objPersona.SolicitudAD) ? `Sin Registro` : objPersona.SolicitudAD)}`
+        + `\n\n**ESTADO AD**: ${(util.isNullOrUndefined(objPersona.EstadoAD) ? `Sin Registro` : objPersona.EstadoAD)}`
             break;
         }
         case 'Banco de Grupos':
         {
-            detallePostulacion += `\n\n**CÓDIGO DE GRUPO**: ${objPersona.CodigoGrupo}`
-        + `\n\n**TIPO DE GRUPO**: ${objPersona.TipoGrupo}`
-        + `\n\n**ESTADO GRUPO**: ${objPersona.EstadoDeGrupo}`
-        + `\n\n**ESTADO PERSONA EN GRUPO**: ${objPersona.EstadoPersonaGrupo}`
+            detallePostulacion += `\n\n**CÓDIGO DE GRUPO**: ${(util.isNullOrUndefined(objPersona.CodigoGrupo) ? `Sin Registro` : objPersona.CodigoGrupo)}`
+        + `\n\n**TIPO DE GRUPO**: ${(util.isNullOrUndefined(objPersona.TipoGrupo) ? `Sin Registro` : objPersona.TipoGrupo)}`
+        + `\n\n**ESTADO GRUPO**: ${(util.isNullOrUndefined(objPersona.EstadoDeGrupo) ? `Sin Registro` : objPersona.EstadoDeGrupo)}`
+        + `\n\n**ESTADO PERSONA EN GRUPO**: ${(util.isNullOrUndefined(objPersona.EstadoPersonaGrupo) ? `Sin Registro` : objPersona.EstadoPersonaGrupo)}`
             if(objPersona.AsociaProyecto == 'Sí')
             {
-                detallePostulacion += `\n\n**ASOCIA PROYECTO**: ${objPersona.AsociaProyecto}`
-                    + `\n\n**CÓDIGO DE PROYECTO**: ${objPersona.CodigoProyecto}`
-                    + `\n\n**TIPO DE PROYECTO**: ${objPersona.TipoProyecto}`
-                    + `\n\n**ESTADO PROYECTO**: ${objPersona.EstadoProyecto}`
-                    + `\n\n**ESTADO PERSONA EN PROYECTO**: ${objPersona.EstadoPersonaProyecto}`     
-                    + `\n\n**ESTADO ADSCRIPCIÓN**: ${objPersona.EstadoAdscripcion}`              
+                detallePostulacion += `\n\n**ASOCIA PROYECTO**: ${(util.isNullOrUndefined(objPersona.AsociaProyecto) ? `Sin Registro` : objPersona.AsociaProyecto)}`
+                    + `\n\n**CÓDIGO DE PROYECTO**: ${(util.isNullOrUndefined(objPersona.CodigoProyecto) ? `Sin Registro` : objPersona.CodigoProyecto)}`
+                    + `\n\n**TIPO DE PROYECTO**: ${(util.isNullOrUndefined(objPersona.TipoProyecto) ? `Sin Registro` : objPersona.TipoProyecto)}`
+                    + `\n\n**ESTADO PROYECTO**: ${(util.isNullOrUndefined(objPersona.EstadoProyecto) ? `Sin Registro` : objPersona.EstadoProyecto)}`
+                    + `\n\n**ESTADO PERSONA EN PROYECTO**: ${(util.isNullOrUndefined(objPersona.EstadoPersonaProyecto) ? `Sin Registro` : objPersona.EstadoPersonaProyecto)}`     
+                    + `\n\n**ESTADO ADSCRIPCIÓN**: ${(util.isNullOrUndefined(objPersona.EstadoAdscripcion) ? `Sin Registro` : objPersona.EstadoAdscripcion)}`              
             }
             break;
         }
         case 'Banco de Postulaciones':
         {
-            detallePostulacion += `\n\n**CÓDIGO DE PROYECTO**: ${objPersona.CodigoProyecto}`
-                + `\n\n**TIPO DE PROYECTO**: ${objPersona.TipoProyecto}`
-                + `\n\n**ESTADO PROYECTO**: ${objPersona.EstadoProyecto}`
-                + `\n\n**ESTADO PERSONA EN PROYECTO**: ${objPersona.EstadoPersonaProyecto}`
-                + `\n\n**ESTADO ADSCRIPCIÓN**: ${objPersona.EstadoAdscripcion}`   
+            detallePostulacion += `\n\n**CÓDIGO DE PROYECTO**: ${(util.isNullOrUndefined(objPersona.CodigoProyecto) ? `Sin Registro` : objPersona.CodigoProyecto)}`
+                + `\n\n**TIPO DE PROYECTO**: ${(util.isNullOrUndefined(objPersona.TipoProyecto) ? `Sin Registro` : objPersona.TipoProyecto)}`
+                + `\n\n**ESTADO PROYECTO**: ${(util.isNullOrUndefined(objPersona.EstadoProyecto) ? `Sin Registro` : objPersona.EstadoProyecto)}`
+                + `\n\n**ESTADO PERSONA EN PROYECTO**: ${(util.isNullOrUndefined(objPersona.EstadoPersonaProyecto) ? `Sin Registro` : objPersona.EstadoPersonaProyecto)}`
+                + `\n\n**ESTADO ADSCRIPCIÓN**: ${(util.isNullOrUndefined(objPersona.EstadoAdscripcion) ? `Sin Registro` : objPersona.EstadoAdscripcion)}`   
 
             if(objPersona.MigradoBcoGrupo == 'Sí')
             {
-                detallePostulacion += `\n\n**MIGRADO BCO. GRUPOS**: ${objPersona.MigradoBcoGrupo}`
-                    + `\n\n**CÓDIGO DE GRUPO**: ${objPersona.CodigoGrupo}`
-                    + `\n\n**TIPO DE GRUPO**: ${objPersona.TipoGrupo}`
-                    + `\n\n**ESTADO GRUPO**: ${objPersona.EstadoDeGrupo}`
-                    + `\n\n**ESTADO PERSONA EN GRUPO**: ${objPersona.EstadoPersonaGrupo}`                
+                detallePostulacion += `\n\n**MIGRADO BCO. GRUPOS**: ${(util.isNullOrUndefined(objPersona.MigradoBcoGrupo) ? `Sin Registro` : objPersona.MigradoBcoGrupo)}`
+                    + `\n\n**CÓDIGO DE GRUPO**: ${(util.isNullOrUndefined(objPersona.CodigoGrupo) ? `Sin Registro` : objPersona.CodigoGrupo)}`
+                    + `\n\n**TIPO DE GRUPO**: ${(util.isNullOrUndefined(objPersona.TipoGrupo) ? `Sin Registro` : objPersona.TipoGrupo)}`
+                    + `\n\n**ESTADO GRUPO**: ${(util.isNullOrUndefined(objPersona.EstadoDeGrupo) ? `Sin Registro` : objPersona.EstadoDeGrupo)}`
+                    + `\n\n**ESTADO PERSONA EN GRUPO**: ${(util.isNullOrUndefined(objPersona.EstadoPersonaGrupo) ? `Sin Registro` : objPersona.EstadoPersonaGrupo)}`                
             }
             break;
         }
